@@ -1,0 +1,804 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+html{
+	overflow-x: hidden;
+}
+@mixin not-last-child($selector) {
+  #{$selector}:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+body{ overflow-x: hidden; }
+body {
+	font-family: Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgb(236,226,216);
+}
+h1 {
+  margin-top: 20px;
+}
+a{
+	text-decoration: none;
+}
+select, input, button {
+  margin: 5px;
+  padding: 5px;
+}
+main {
+  background-color: #323232; 
+}
+.header {
+		background-color: rgba(34, 34, 34, 1) ;
+		color:white;
+		
+		&_container {
+		}
+
+		&_content {
+			width: 100%;
+			display: flex;
+			align-items: start;
+			justify-content: space-between;
+		}
+
+		&_body {
+			
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			justify-content: start;
+			gap:10vw;
+			width: 80%;
+		}
+
+		&_menu {
+      position: fixed;
+      background-color: rgba(26, 26, 26, 0.8) ;
+			display: flex;
+			gap:40px;
+			text-transform: uppercase;
+      width: 100vw;
+      left:0px;
+      padding: 30px;
+      z-index: 999;
+		}
+    &_menu:hover{
+      background-color: rgba(34, 34, 34, 1) ;
+    }
+
+		&_logo h2 {
+			font-family: 'Prata', serif;
+			font-weight: 400;
+			letter-spacing: 3px; 
+			line-height: 120%; 
+		font-size: calc(30px + ((36 - 30) * (100vw - 320px) / 1600));
+		}
+
+		&_navigation{
+			display: flex;
+			gap:30px;
+			align-items: center;
+		}
+		&_navigation span{
+			display: inline-block;
+			font-size: calc( 16px + ((20 - 16) * (100vw - 320px) / (1920 - 320)));
+			letter-spacing: 4%;
+			line-height: 120%;
+			font-weight: italic; 
+			
+		}
+		&_body-content {
+		}
+
+		&_image {
+
+			
+		}
+		&_image img{
+			object-fit: cover;
+			width: 600px;
+			
+		}
+		&_image img{
+
+		}
+}
+.container {
+	max-width: 95vw;
+	margin: 0 calc(5vw / 2);
+	padding: 0 40px;
+}
+@media (max-width: 1080px) {
+	.container{
+		margin: 0 calc(4vw / 2);
+		padding: 0 30px;
+	}
+
+}
+	@media (max-width: 720px) {
+		.container{
+margin: 0 calc(3vw / 2);
+padding: 0 20px;}
+}
+	@media (max-width: 480px) {
+		.container{
+margin: 0 calc(2vw / 2);
+padding: 0 10px;}
+}
+	@media (max-width: 320px) {
+		.container{
+margin: 0;
+padding: 0;}
+}
+.header_container.container{
+	margin-right:0;
+	padding-right: 0;
+}
+.body-content {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	justify-content: space-between;
+	gap: 30px;
+  padding-top: 100px;
+	&_title{
+		
+	}
+		&_title h2{
+			display: inline-block;
+			font-family: 'Prata', serif;
+  		font-weight: 400; 
+			letter-spacing: 3%;
+			line-height: 140%;
+			font-size: calc( 38px + ((70 - 38) * (100vw - 320px) / (1920 - 320)));
+			text-align: start;
+		}
+		&_subtitle{
+
+		}
+		&_subtitle span{
+			display: inline-block;
+			font-size: calc( 20px + ((50 - 20) * (100vw - 320px) / (1920 - 320)));
+			letter-spacing: 4%;
+			line-height: 130%;
+			font-weight: 400;
+			
+		}
+
+		&_text {
+			display: flex;
+			flex-direction: column;
+			gap:20px;
+		}
+		&_text p{
+			text-transform: uppercase;
+			display: inline-block;
+			font-family: 'Prata', serif;
+  		font-weight: 400; 
+			letter-spacing: 3%;
+			line-height: 140%;
+			font-size: calc( 30px + ((40 - 30) * (100vw - 320px) / (1920 - 320)));
+		}
+		&_text span{
+			display: inline-flex;
+			font-weight: Arial;
+			font-size: calc( 20px + ((24 - 20) * (100vw - 320px) / (1920 - 320)));
+			letter-spacing: 4%;
+			line-height: 140%;
+			font-weight: 400;
+			position: relative;
+			align-items: center;
+			gap:10px;
+		}
+		&_text span::before{
+			content: " ";
+			background-image: url("../img/point.png");
+			width: 39px;
+			height: 37px;
+			display: block;
+			// position: absolute;
+			// top:50%;
+			// left: -17%;
+			// transform: translate(0%,-50%);
+		}
+		&_button {
+
+		}
+}
+.header-big span::before {
+	content: " ";
+	display: none;
+	
+}
+.button-container {
+	padding: 20px;
+}
+
+.custom-button {
+	font-size: 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 20px 120px;
+	background: white;
+	color: black;
+	border: 2px solid white;
+	outline: none;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	border-radius: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.custom-button:hover {
+	background: #f0f0f0;
+	color: #000;
+	transform: scale(1.05);
+}
+
+.custom-button:active {
+	background: #ddd;
+	transform: scale(0.98);
+}
+@media (max-width: 1200px) {
+	.header_content{
+		flex-direction: column;
+		align-items: center;
+	}
+	.header_image img{
+		width: 90vw;
+	}
+	.custom-button{
+		font-size: 30px;
+		padding: 20px 120px;
+	}
+	.button-container{
+		padding-left: 0;
+	}
+}
+@media (max-width: 700px) {
+	.header_menu{
+		gap:7px;
+	}
+	.header_logo h2{
+		font-size: 25px;
+	}
+	.header_content{
+		align-items: start;
+	}
+	.header_navigation {
+		gap: 7px;
+	}
+	.header_navigation span{
+		font-size: 13px;
+	}
+	.header_logo h2{
+		font-size: 18px;
+	}
+	.body-content_title h2{
+		font-size: 20px;
+	}
+	
+	.body-content_text p{
+		font-size: 18px;
+	}
+	.body-content{
+		min-width: 320px;
+	}
+	.custom-button{
+		font-size: 25px;
+		padding:15px 60px;
+	}
+	.button-container{
+		margin: 0 auto;
+	}
+	.header_image{
+		margin:0 9px;
+	}
+	.header_image img{
+		
+		width: 95vw;
+	}
+}
+//===============================================================================================
+.information {
+  margin-top: 80px;  
+  padding: 40px 0; // общий отступ сверху/снизу
+  
+  &_container {
+    // Можно добавить max-width, если нужно ограничить ширину
+    // max-width: 1200px;
+    // margin: 0 auto;
+  }
+
+  &_content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px; // расстояние между колонками
+  }
+
+  /********************************
+    Картинки слева и справа
+  ********************************/
+  &_image-left,
+  &_image-right {
+    flex: 1;
+    img {
+			object-fit: cover;
+      width: 100%;
+      height: 537px;
+      display: block;
+    }
+  }
+
+  &_body {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    color: #ffffff; // белый цвет текста
+  }
+
+  &_types {
+    display: flex;
+    flex-direction: column;
+    // Вариант использования миксина:
+    // @include not-last-child('.information_type') {
+		// 	margin-bottom: 20px;
+    // }
+		margin-bottom: 20px; // отступ снизу у всей группы
+  }
+
+  /********************************
+    Оформление каждого пункта
+    (иконка слева + текст)
+  ********************************/
+  &_type {
+    padding-left: 50px;
+    margin-bottom: 20px; 
+		position: relative;
+    padding: 20px 0;          // внутренняя высота
+    margin-bottom: 20px;      // отступ между пунктами
+    border-bottom: 1px solid #666; 
+		text-align: start;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -30px;
+      top: 10px;
+      width: 30px;
+      height: 30px;
+      // Замените иконку на свою
+      background: url('../img/information-before.png') no-repeat center/contain;
+    }
+		&:last-child {
+      border-bottom: none;
+    }
+    span {
+      // Стили самого текста
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+}
+
+/********************************
+  Класс для контейнера (если нужно)
+********************************/
+.container {
+  // max-width: 1200px;
+  // margin: 0 auto;
+  // padding: 0 20px;
+}
+
+/********************************
+  Кнопка
+********************************/
+.button-container {
+  padding: 20px;
+  text-align: center; // Чтобы кнопка была по центру
+}
+
+.custom-button {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 16px 60px;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background: #ddd;
+    transform: scale(0.98);
+  }
+}
+@media (max-width: 1200px) {
+  .information_content {
+    flex-direction: column;
+    align-items: center; /* чтобы всё стало по центру */
+    gap: 20px; /* небольшой промежуток между элементами */
+  }
+
+  .information_body {
+    max-width: 80%;  /* ширина центрального контента */
+    margin: 0 auto;  /* по центру */
+  }
+	.information_type{
+		text-align: start;
+	}
+	.information_type::before{
+		top:14px;
+		left:-35px;
+	}
+}
+
+/********************************
+  Адаптивность. Шаг 2:
+  при ширине <= 992px
+  (примерно планшеты)
+********************************/
+@media (max-width: 992px) {
+  .information_type {
+    font-size: 14px; /* уменьшаем шрифт */
+    padding: 15px 0;
+  }
+  .custom-button {
+    font-size: 16px;
+    padding: 14px 50px;
+  }
+}
+
+/********************************
+  Адаптивность. Шаг 3:
+  при ширине <= 768px
+  (пример: мобильные)
+********************************/
+@media (max-width: 768px) {
+  .information_type {
+    font-size: 13px;
+  }
+  .custom-button {
+    font-size: 14px;
+    padding: 12px 40px;
+  }
+}
+// Исходный фон всего сайта, например, серо-темный:
+.form-section {
+  padding: 40px 0;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 20px;
+    /* Чтобы изображение не выходило за скругленные углы */
+    overflow: hidden;
+
+    /* Сверху/снизу внутренние отступы по желанию
+       Вы убрали их и оставили только паддинги слева:
+       padding: 0; 
+       Но здесь пример с нулевым сверху/снизу и 40px слева. */
+    padding: 0px;
+    padding-left: 40px;
+    
+    /* Если хотите зафиксировать высоту, можно включить:
+       min-height: 400px;
+    */
+  }
+
+  &__content {
+    flex: 1;
+    margin-right: 20px;
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #2f2f2f;
+      line-height: 1.2;
+    }
+	}
+    /* Блок самой формы */
+    &__form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    /* Поля ввода */
+    &__input {
+      width: 90%;
+      padding: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      
+      &:focus {
+        border-color: #999;
+      }
+    }
+    
+    /* Чекбокс + текст */
+    &__checkbox-label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #333;
+
+      input[type='checkbox'] {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    &__button {
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #555;
+        transform: scale(1.05);
+      }
+      &:active {
+        background-color: #222;
+        transform: scale(0.95);
+      }
+    }
+
+  &__image {
+    flex: 1;
+    position: relative;
+    /* Подставьте правильный путь к картинке */
+    background: url("../img/women.png") no-repeat center center / cover;
+    height: 600px;
+  }
+}
+
+/* Адаптив при ширине <= 992px */
+@media (max-width: 992px) {
+  .form-section__wrapper {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .form-section__content {
+    margin-right: 0;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .form-section__image {
+    width: 100%;
+    min-height: 300px; /* для пустого блока, чтоб картинка отображалась */
+    margin-top: 20px;
+  }
+	
+}
+/***************************************
+  Общий фон и цвета футера
+***************************************/
+.footer {
+  background-color: #1f1f1f; /* тёмный фон */
+  color: #ccc;              /* общий светло-серый цвет текста */
+  font-family: Arial, sans-serif; /* пример шрифта */
+  
+  /* Вверх - меню */
+  &__top {
+    /* Если у вас уже есть .container со своими отступами, 
+       можно не дублировать здесь. 
+       Примерные отступы: */
+    padding: 10px 0;
+
+    /* Горизонтальные границы:
+       (если нужно, как на скрине, две тонкие полосы сверху/снизу) */
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+
+    .footer__menu {
+      display: flex;
+      justify-content: center; 
+      /* или space-around/center в зависимости от дизайна */
+      gap: 40px;    /* расстояние между ссылками */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      
+      li {
+        a {
+          text-transform: uppercase;
+          text-decoration: none;
+          color: #ccc;
+          transition: color 0.3s;
+          
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  /* Тонкая разделительная линия между верхним и нижним блоком */
+  &__divider {
+    border-bottom: 1px solid #666;
+    margin: 20px 0; /* Отступ между блоками */
+  }
+
+  /* Основная часть футера: лево-центр-право */
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  /* Левая колонка */
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .footer__logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #fff; /* более яркий цвет */
+      margin-bottom: 5px;
+    }
+
+    /* Можете стилизовать копирайт по-своему */
+    div {
+      font-size: 14px;
+      color: #ccc;
+    }
+  }
+
+  /* Центр: иконки и privacy policy */
+  &__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .footer__social-list {
+      display: flex;
+      gap: 15px; 
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li a {
+        color: #ccc;
+        font-size: 20px; /* размер иконок */
+        transition: color 0.3s;
+        
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+
+    .footer__privacy {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  /* Правая колонка: кнопка + Terms */
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+
+    .footer__button {
+      background-color: #fff;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+    
+    .footer__terms {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+      transition: color 0.3s;
+      
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+/***************************************
+  Пример адаптива
+***************************************/
+@media (max-width: 768px) {
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer__left,
+  .footer__center,
+  .footer__right {
+    align-items: center; /* чтобы всё было по центру */
+  }
+	.footer__top .footer__menu{
+		gap:12px;
+	}
+}
